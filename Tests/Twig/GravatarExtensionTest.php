@@ -5,6 +5,7 @@ namespace Ornicar\GravatarBundle\Tests\Twig;
 use Ornicar\GravatarBundle\Templating\Helper\GravatarHelperInterface;
 use Ornicar\GravatarBundle\Twig\GravatarExtension;
 use PHPUnit\Framework\TestCase;
+use Twig\TwigFunction;
 
 class GravatarExtensionTest extends TestCase
 {
@@ -18,13 +19,9 @@ class GravatarExtensionTest extends TestCase
      */
     private $extension;
 
-    public function setUp()
+    public function setUp(): void
     {
-        if (!class_exists('Twig_Extension')) {
-            $this->markTestSkipped('Twig_Extension cannot be found');
-        }
-
-        $this->helper = $this->createMock('Ornicar\GravatarBundle\Templating\Helper\GravatarHelperInterface');
+        $this->helper = $this->createMock(GravatarHelperInterface::class);
         $this->extension = new GravatarExtension($this->helper);
     }
 
@@ -41,14 +38,9 @@ class GravatarExtensionTest extends TestCase
         $this->extension->getProfileUrlForHash(md5('henrik@bjrnskov.dk'));
     }
 
-    public function testName()
-    {
-        $this->assertEquals('ornicar_gravatar', $this->extension->getName());
-    }
-
     public function testFunctions()
     {
-        $this->assertContainsOnlyInstancesOf('\Twig_SimpleFunction', $this->extension->getFunctions());
+        $this->assertContainsOnlyInstancesOf(TwigFunction::class, $this->extension->getFunctions());
 
         $expectedNames = array(
             'gravatar',

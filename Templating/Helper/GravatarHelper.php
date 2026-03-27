@@ -4,23 +4,22 @@ namespace Ornicar\GravatarBundle\Templating\Helper;
 
 use Ornicar\GravatarBundle\GravatarApi;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Templating\Helper\Helper;
 
 /**
- * Symfony 2 Helper for Gravatar. Uses Bundle\GravatarBundle\GravatarApi.
+ * Helper for Gravatar. Uses Ornicar\GravatarBundle\GravatarApi.
  *
  * @author Thibault Duplessis
  * @author Henrik Bjornskov <henrik@bearwoods.dk>
  */
-class GravatarHelper extends Helper implements GravatarHelperInterface
+class GravatarHelper implements GravatarHelperInterface
 {
     /**
-     * @var Ornicar\GravatarBundle\GravatarApi
+     * @var GravatarApi
      */
     protected $api;
 
     /**
-     * @var RouterInterface
+     * @var RouterInterface|null
      */
     protected $router;
 
@@ -84,16 +83,6 @@ class GravatarHelper extends Helper implements GravatarHelperInterface
     public function exists($email)
     {
         return $this->api->exists($email);
-    }
-
-    /**
-     * Name of this Helper.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'gravatar';
     }
 
     /**

@@ -10,7 +10,7 @@ class GravatarHelperTest extends TestCase
 {
     protected $helper;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->helper = new GravatarHelper(new GravatarApi());
     }

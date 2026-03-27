@@ -1,5 +1,5 @@
 {
-    "name": "ornicar/gravatar-bundle",
+    "name": "rgsystemes/gravatar-bundle",
     "description": "This bundles provides a Gravatar API various utilities to work with it in templates",
     "keywords": ["symfony", "gravatar", "templating", "twig"],
     "type": "symfony-bundle",
